@@ -1,6 +1,27 @@
 from django.urls import path
+from rest_framework_extensions.routers import ExtendedSimpleRouter
 
-from .views import CourseAPIView, CoursesAPIView, ReviewAPIView, ReviewsAPIView
+from .views import (
+    CourseAPIView, 
+    CoursesAPIView,
+    ReviewAPIView,
+    ReviewsAPIView,
+    CourseViewSet,
+    ReviewViewSet
+)
+
+
+"""
+API V2
+"""
+
+router = ExtendedSimpleRouter()
+router.register(r'cursos', CourseViewSet, basename = 'courses').register(r'avaliacoes', ReviewViewSet, basename = 'reviews', parents_query_lookups = ['course'])
+
+
+"""
+API V1
+"""
 
 urlpatterns = [
     path('cursos/', CoursesAPIView.as_view(), name='courses'),
