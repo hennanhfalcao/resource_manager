@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.db.models import Avg
 
 from courses.models import Course, Review
 
@@ -22,6 +23,11 @@ class ReviewSerializer(serializers.ModelSerializer):
             'active',
         )
         
+    def validate_rating(self, value):
+        if not (1 <= value <= 5):
+            raise serializers.ValidationError('A avaliação deve ser um inteiro entre 1 e 5')
+        return value
+
 class CourseSerializer(serializers.ModelSerializer):
     
     #Nested relatioship
@@ -37,6 +43,8 @@ class CourseSerializer(serializers.ModelSerializer):
     #Primary Key Related Field (mais performático)
     reviews = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
+    #average_rating = serializers.SerializerMethodField()
+
     class Meta:
         model = Course
         fields = (
@@ -46,4 +54,11 @@ class CourseSerializer(serializers.ModelSerializer):
             'publication',
             'active',
             'reviews',
+            'average_rating'
         )
+
+    """def get_average_rating(self, obj):    
+        average = obj.reviews.aggregate(Avg('rating')).get('rating__avg')
+        if average is None:
+            return 0
+        return round(average*2)/2"""
