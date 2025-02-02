@@ -1,5 +1,5 @@
 from django.urls import path
-from rest_framework_extensions.routers import ExtendedSimpleRouter
+from rest_framework_extensions.routers import SimpleRouter
 
 from .views import (
     CourseAPIView, 
@@ -15,8 +15,9 @@ from .views import (
 API V2
 """
 
-router = ExtendedSimpleRouter()
-router.register(r'cursos', CourseViewSet, basename = 'courses').register(r'avaliacoes', ReviewViewSet, basename = 'reviews', parents_query_lookups = ['course'])
+router = SimpleRouter()
+router.register('cursos', CourseViewSet)
+router.register('avaliacoes', ReviewViewSet)
 
 
 """

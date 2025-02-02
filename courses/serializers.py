@@ -23,6 +23,19 @@ class ReviewSerializer(serializers.ModelSerializer):
         )
         
 class CourseSerializer(serializers.ModelSerializer):
+    
+    #Nested relatioship
+    """reviews = ReviewSerializer(many=True, read_only=True)"""
+
+    #Hyperlinked related field
+    """reviews = serializers.HyperlinkedRelatedField(
+        many=True, 
+        read_only=True, 
+        view_name='review-detail'
+        )"""
+    
+    #Primary Key Related Field (mais performático)
+    reviews = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Course
@@ -32,4 +45,5 @@ class CourseSerializer(serializers.ModelSerializer):
             'url',
             'publication',
             'active',
+            'reviews',
         )
