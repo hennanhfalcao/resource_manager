@@ -34,16 +34,15 @@ class CourseSerializer(serializers.ModelSerializer):
     """reviews = ReviewSerializer(many=True, read_only=True)"""
 
     #Hyperlinked related field
-    """reviews = serializers.HyperlinkedRelatedField(
+    reviews = serializers.HyperlinkedRelatedField(
         many=True, 
         read_only=True, 
         view_name='review-detail'
-        )"""
+        )
     
     #Primary Key Related Field (mais performático)
-    reviews = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    """reviews = serializers.PrimaryKeyRelatedField(many=True, read_only=True)"""
 
-    #average_rating = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
@@ -56,9 +55,3 @@ class CourseSerializer(serializers.ModelSerializer):
             'reviews',
             'average_rating'
         )
-
-    """def get_average_rating(self, obj):    
-        average = obj.reviews.aggregate(Avg('rating')).get('rating__avg')
-        if average is None:
-            return 0
-        return round(average*2)/2"""
