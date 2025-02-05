@@ -78,16 +78,16 @@ O servidor será iniciado em http://127.0.0.1:8000/
 | --- | --- | --- |
 | /api/v2/cursos/ | GET | Lista todos os cursos |
 | /api/v2/cursos/ | POST | Cria um novo curso |
-| /api/v2/cursos/{id} | GET | Obtém detalhes de um curso pelo ID |
-| /api/v2/cursos/{id} | PUT | Aualiza um curso pelo ID |
-| /api/v2/cursos/{id} | DELETE | Apaga um curso pelo ID |
+| /api/v2/cursos/{id}/ | GET | Obtém detalhes de um curso pelo ID |
+| /api/v2/cursos/{id}/ | PUT | Aualiza um curso pelo ID |
+| /api/v2/cursos/{id}/ | DELETE | Apaga um curso pelo ID |
 | /api/v2/cursos/{id}/avaliacoes/ | GET | Lista todas as avaliações de um curso |
-| /api/v2/cursos/{id}/avaliacoes/{id} | GET | Obtém detalhes de uma avaliação específica de um curso pelo ID |
+| /api/v2/cursos/{id}/avaliacoes/{id}/ | GET | Obtém detalhes de uma avaliação específica de um curso pelo ID |
 | /api/v2/avaliacoes/ | GET | Lista todas as avaliações |
-| /api/v2/avaliacoes/{id} | GET | Obtém detalhes de uma avaliação pelo ID |
+| /api/v2/avaliacoes/{id}/ | GET | Obtém detalhes de uma avaliação pelo ID |
 | /api/v2/avaliacoes/ | POST | Cria uma nova avaliação |
-| /api/v2/avaliacoes/{id} | PUT | Atualiza uma avaliação pelo ID |
-| /api/v2/avaliacoes/{id} | DELETE | Apaga uma avaliação pelo ID |
+| /api/v2/avaliacoes/{id}/ | PUT | Atualiza uma avaliação pelo ID |
+| /api/v2/avaliacoes/{id}/ | DELETE | Apaga uma avaliação pelo ID |
 
 ### 🔎 Exemplo de Uso de Query Params
 
